@@ -10,33 +10,23 @@
   </head>
 
   <body>
-    <div class="toolbar">
-      <!-- Разметка переключателя темы -->
-      <div class="theme-switch">
-        <svg class="theme-switch__icon" role="img" aria-label="Иконка солнца">
-          <use href="./images/sprite.svg#sun"></use>
-        </svg>
-
-        <div class="theme-switch__control">
-          <input
-            class="theme-switch__toggle"
-            type="checkbox"
-            name="theme"
-            id="theme-switch-toggle"
-            aria-label="Переключить между тёмной и светлой темой"
-          />
-          <label aria-hidden="true" class="theme-switch__track" for="theme-switch-toggle"> </label>
-          <div aria-hidden="true" class="theme-switch__marker"></div>
-        </div>
-
-        <svg class="theme-switch__icon" aria-label="Иконка луны">
-          <use href="./images/sprite.svg#moon"></use>
-        </svg>
+    <article class="intro">
+      <div class="seach_country_form">
+        <h1>enter the country name</h1>
+        <input
+          type="text"
+          class="search"
+          size="30"
+          name="string"
+          placeholder="Name of country"
+          pattern="^[a-zA-Z]+$"
+        />
       </div>
-    </div>
-
+      <div class="js-render-card"></div>
+    </article>
     <!-- В этот список рендери разметку меню -->
-    <ul class="menu js-menu"></ul>
-    <script src="./index.js"></script>
+    <!-- 
+   // <script src="./index.js"></script> -->
   </body>
 </html>
+a
