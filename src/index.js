@@ -1,10 +1,13 @@
 import './styles.css';
-import countryCardsSuccess from '../src/templates/success.hbs';
+import countryCardsSucces from '../src/templates/success.hbs';
 import debounce from 'lodash.debounce';
 // import refs from './js/refs.js';
 const refs = {
-  seachForm: document.querySelector('.seach_country'),
-  cardConteiner: document.querySelector('.js-render-card'),
+  seachForm: document.querySelector('#name_input'),
+  // для вдагого
+  cardContainer: document.querySelector('.js-render-card'),
+  // невдалого
+  listContainer: document.querySelector('.country_cards_list'),
 };
 
 refs.seachForm.addEventListener('input', debounce(seachContry, 500));
@@ -12,20 +15,27 @@ refs.seachForm.addEventListener('input', debounce(seachContry, 500));
 function seachContry(e) {
   e.preventDefault();
 
-  const searchCountryss = refs.seachForm.value;
-  featchCountry(searchCountryss)
+  const searchCountrys = refs.seachForm.value;
+  featchCountrys(searchCountrys)
     .then(renderContryCards)
-    .catch(error => console.log(error));
-  // .finally(() => form.reset());
+    .catch(error => console.log(error))
+    .finally(() => form.reset());
 }
 
-function featchCountry(name) {
-  fetch(`https://restcountries.com/v3.1/name/${name}`).then(response => {
+function featchCountrys(country) {
+  return fetch(`https://restcountries.com/v2/name/${country}`).then(response => {
     return response.json();
   });
 }
 
 function renderContryCards(country) {
-  const marckup = countryCardsSuccess(country);
-  refs.cardConteiner.innerHTML = marckup;
+  const marckup = countryCardsSucces(country);
+  // const marckup = country.map(countryCardsSucces).join('');
+  refs.cardContainer.innerHTML = marckup;
 }
+// function renderContryCards(country) {
+//   const markup = country.map(countryCardsSucces).join('');
+//   refs.cardContainer.innerHTML = markup;
+// }
+
+// peru

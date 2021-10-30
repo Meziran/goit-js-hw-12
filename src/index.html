@@ -10,22 +10,22 @@
   </head>
 
   <body>
-    <article class="intro">
-      <div class="seach_country_form">
-        <h1>введіть назву країни</h1>
-        <input
-          class="seach_country"
-          type="text"
-          class="search"
-          size="30"
-          name="string"
-          placeholder="назва країни"
-          pattern="^[a-zA-Z]+$"
-        />
-      </div>
-      <!-- В этот список рендери разметку меню -->
-      <div class="js-render-card"></div>
-    </article>
+    <div class="seach_country">
+      <h1>введіть назву країни</h1>
+      <input
+        id="name_input"
+        type="text"
+        class="search"
+        size="30"
+        name="string"
+        placeholder="назва країни"
+        pattern="^[a-zA-Z]+$"
+      />
+    </div>
+    <!-- В этот список рендери разметку меню -->
+    <div class="country__cards"></div>
+
+    <div class="js-render-card"></div>
 
     <script src="./index.js"></script>
   </body>
