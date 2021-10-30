@@ -1,59 +1,31 @@
-
 import './styles.css';
-import menuEl from './menu.json';
-import MenuTmp from './templates/gallery.hbs';
-
+import countryCardsSuccess from '../src/templates/success.hbs';
+import debounce from 'lodash.debounce';
+// import refs from './js/refs.js';
 const refs = {
-    body: document.querySelector('body'),
-    switcher: document.querySelector('#theme-switch-toggle'),
-    menu: document.querySelector('.js-menu'),
-}; 
-// MENU
-const menuMarkUp = MenuTmp([...menuEl]);
-refs.menu.insertAdjacentHTML('beforeend', menuMarkUp);
-// /MENU
-
-// THEMS
-const Theme = {
-  LIGHT: 'light-theme',
-  DARK: 'dark-theme',
+  seachForm: document.querySelector('.seach_country'),
+  cardConteiner: document.querySelector('.js-render-card'),
 };
- 
-refs.switcher.addEventListener ('change', setClasslist);
 
-function switchThem (q, e) {
-    refs.body.classList.add(q);
-    refs.body.classList.remove(e);
+refs.seachForm.addEventListener('input', debounce(seachContry, 500));
+
+function seachContry(e) {
+  e.preventDefault();
+
+  const searchCountryss = refs.seachForm.value;
+  featchCountry(searchCountryss)
+    .then(renderContryCards)
+    .catch(error => console.log(error));
+  // .finally(() => form.reset());
 }
 
-function setClasslist() {
-    const chek = refs.switcher.checked;
-    if(chek) {
-        return switchThem(Theme.DARK, Theme.LIGHT)
-    } else {
-        switchThem (Theme.LIGHT, Theme.DARK)
-    }
-};
+function featchCountry(name) {
+  fetch(`https://restcountries.com/v3.1/name/${name}`).then(response => {
+    return response.json();
+  });
+}
 
-// /THEMS
-
-
-// LocalStorage
-refs.switcher.addEventListener('change', setLocalStorage);
-
-function setLocalStorage() {
-    const check = refs.switcher.checked;
-    if (check) {
-      localStorage.setItem('theme', Theme.DARK);
-    } else {
-      localStorage.removeItem('theme');
-      localStorage.setItem('theme', Theme.LIGHT);
-    }
-  }
-  
-  const localTheme = localStorage.getItem('theme');
-  if (localTheme === Theme.DARK) {
-    refs.body.classList.add(Theme.DARK);
-    refs.switcher.checked = true;
-  }
-  // /LocalStorage
+function renderContryCards(country) {
+  const marckup = countryCardsSuccess(country);
+  refs.cardConteiner.innerHTML = marckup;
+}
