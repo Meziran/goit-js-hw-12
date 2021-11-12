@@ -1,12 +1,12 @@
 {
-  "name": "goit-js-hw-12-countries",
+  "name": "goit-js-hw-12",
   "version": "1.1.0",
   "description": "",
   "main": "index.js",
-  "homepage": "https://meziran.github.io/goit-js-hw-12-countries",
+  "homepage": "https://meziran.github.io/goit-js-hw-12",
   "scripts": {
     "dev": "parcel src/*.html",
-    "build": "parcel build src/*.html --public-url / goit-js-hw-12-countries/"
+    "build": "parcel build src/*.html --public-url /goit-js-hw-12/"
   },
   "repository": {
     "type": "git",
@@ -16,20 +16,17 @@
   "author": "Alexander Mateichuk <Mateychyk@ukr.net>",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Meziran/goit-js-hw-12-countries/issues"
+    "url": "https://github.com/Meziran/goit-js-hw-12/issues"
   },
   "devDependencies": {
     "parcel-bundler": "^1.12.5",
     "parcel-plugin-handlebars-precompile": "^1.0.2",
     "parcel-plugin-nuke-dist": "^1.0.1",
+    "pnotify": "^5.2.0",
     "posthtml-include": "^1.6.2",
     "sass": "^1.32.8"
   },
   "dependencies": {
-    "@pnotify/confirm": "^5.2.0",
-    "@pnotify/core": "^5.2.0",
-    "lodash": "^4.17.21",
-    "lodash.debounce": "^4.0.8",
-    "parcel-plugin-handlebars": "^0.4.4"
+    "lodash.debounce": "^4.0.8"
   }
 }
